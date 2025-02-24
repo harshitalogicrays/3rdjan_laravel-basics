@@ -1,0 +1,6 @@
+blade directives -
+layout - 
+header 
+footer 
+navbar 
+

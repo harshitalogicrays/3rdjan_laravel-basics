@@ -1,0 +1,24 @@
+routes --- web.php 
+get - fetch 
+post - server submit 
+put - update
+delete - delete 
+
+welcome.blade.php -> 
+blade - templating engine 
+at the place of .html or .php => .blade.php 
+variable + html 
+
+blade comment  =>  {{--   --}}
+
+routing ---------> controller -------> view 
+
+php artisan make:controller controllername 
+
+
+php artisan make:controller firstController 
+
+3 types of controller - 
+1. basic controller
+2. single action controller
+3. resource controller
