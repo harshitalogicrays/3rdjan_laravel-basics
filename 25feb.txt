@@ -1,0 +1,7 @@
+php artisan make:controller customerController 
+
+validation rules  - 
+1. function closure 
+2. rule 
+
+create customer table 

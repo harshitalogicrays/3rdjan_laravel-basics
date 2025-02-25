@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstController;
+use App\Http\Controllers\customerController;
 use App\Http\Controllers\layoutDemoController;
 //http://127.0.0.1:8000/ - base URL
 // Route::get('/', function () {
@@ -54,5 +55,12 @@ Route::controller(layoutDemoController::class)->group(function(){
     Route::get('/products','products');
     Route::get('/signin','login');
     Route::get('/register','register');
+}); 
 
+Route::controller(customerController::class)->group(function(){
+    Route::prefix('/customer')->group(function(){
+        Route::get('/','index');
+        Route::get('/create','create');
+        Route::post('/add','store')->name('add');
+    });
 }); 

@@ -22,9 +22,9 @@
               Customer
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Add</a></li>
+              <li><a class="dropdown-item" href="{{url('/customer/create')}}">Add</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">View</a></li>
+              <li><a class="dropdown-item" href="{{url('/customer')}}">View</a></li>
             </ul>
           </li>
         </ul>
