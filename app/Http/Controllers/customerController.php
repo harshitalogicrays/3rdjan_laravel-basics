@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Rules\uppercase;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class customerController extends Controller
 {
     function index(){
-        return view('customer.index');   
+        // $customers = Customer::all();
+        $customers = Customer::paginate(3);
+        return view('customer.index',compact('customers'));   
     }
     function create(){
         return view('customer.create');
@@ -39,14 +43,37 @@ class customerController extends Controller
         // dd($request->all());
 
             $request->validate([
-                'name'=>'required',
-                'email'=>['required'],
+                'name'=>['required',new uppercase],
+                'email'=>['required' , function($attribute , $value , $fail){
+                    if(!preg_match("/^[\w\.]+\@[\w]+\.[a-zA-Z]{3}$/" , $value)){
+                        $fail("Invalid :attribute");
+                    }
+                }],
                 'password'=>['required','min:5','max:20'],
                 'cpassword'=>['required','same:password'],
             ]);
 
-        return redirect('/customer')->with('message','customer added');
+            $customer = new Customer; 
+            $customer->name = $request->name;
+            $customer->email = $request->email;
+            $customer->mobile = $request->mobile;
+            $customer->dob = $request->dob;
+            $customer->password = $request->password;
+            $customer->gender = $request->gender;
+            $customer->address = $request->address;
+            $customer->status = $request->status==true?"1":"0";
+            if($customer->save()){
+                return redirect('/customer')->with('message','customer added');
+            }
+
     }
+
+    function delete($id){
+        $customers = Customer::find($id)->delete();
+        return redirect('/customer')->with('message','customer deleted');
+    }
+    function edit(){}
+    function update(){}
 }
 
 // 'password'=>['required','min:5','max:20','confirmed']

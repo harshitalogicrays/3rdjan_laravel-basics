@@ -62,5 +62,8 @@ Route::controller(customerController::class)->group(function(){
         Route::get('/','index');
         Route::get('/create','create');
         Route::post('/add','store')->name('add');
+        Route::get('/delete/{id}','delete');
+        Route::get('/edit/{id}','edit');
+        Route::put('/update/{id}','update');
     });
 }); 

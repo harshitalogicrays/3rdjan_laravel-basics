@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header">
                 <h1>Add Customer 
-                    <button type="button" class="btn btn-primary float-end btn-lg"> View Customers</button>    
+                    <a href="{{url('/customer')}}" type="button" class="btn btn-primary float-end btn-lg"> View Customers</a>    
                 </h1>
             </div>
             <div class="card-body">
@@ -14,14 +14,14 @@
                     <div class="row">
                         <div class="mb-3 col">
                             <label for="" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" name="name" value="{{old('name')}}">
                             @error('name')
                                 <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3 col">
                             <label for="" class="form-label">Email</label>
-                            <input type="text" class="form-control" name="email">
+                            <input type="text" class="form-control" name="email" value="{{old('email')}}">
                             @error('email')
                             <span class="text-danger">{{$message}}</span>
                         @enderror
@@ -30,11 +30,11 @@
                     <div class="row">
                         <div class="mb-3 col">
                             <label for="" class="form-label">Mobile</label>
-                            <input type="number" class="form-control" name="mobile">
+                            <input type="number" class="form-control" name="mobile" value="{{old('mobile')}}">
                         </div>
                         <div class="mb-3 col">
                             <label for="" class="form-label">DOB</label>
-                            <input type="date" class="form-control" name="dob">
+                            <input type="date" class="form-control" name="dob" value="{{old('dob')}}">
                         </div>
                     </div>
                     <div class="row">
@@ -71,7 +71,7 @@
                     </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Address</label>
-                            <textarea class="form-control" name="address"></textarea>
+                            <textarea class="form-control" name="address">{{old('address')}}</textarea>
                         </div>
                         <div class="mb-3 ">
                             <label for="" class="form-label">status : &emsp;</label>
