@@ -14,6 +14,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Mobile</th>
+                                <th>DOB</th>
                                 <th>Gender</th><th>status</th><th>Actions</th>
                         </tr>
                 </thead>
@@ -23,7 +24,19 @@
                                         <td>{{$customer->name}}</td>
                                         <td>{{$customer->email}}</td>
                                         <td>{{$customer->mobile}}</td>
-                                        <td>{{$customer->gender}}</td>
+                                        <td>{{$customer->dob ? 
+                                        formatdate('d-M-Y',$customer->dob) : "NA"}}
+                                              
+                                                </td>
+                                        <td>
+                                                @if ($customer->gender=="m")
+                                                Male    
+                                                @elseif ($customer->gender=="f")
+                                                Female
+                                                @else
+                                                   Other     
+                                                @endif
+                                                </td>
                                         <td>    @if($customer->status=="1")
                                                  <span class="badge rounded-pill text-bg-success">Active</span>   
                                                 @else
@@ -31,14 +44,15 @@
                                                 @endif
                                         </td>
                                         <td>
-                                                <a class="btn btn-success"><i class="bi bi-pen"></i></a>
-                                                <a class="btn btn-danger" 
+                                                <a class="btn btn-success"
+                                                href="{{url('/customer/edit/'.$customer->id)}}"><i class="bi bi-pen"></i></a>
+                                                <a class="btn btn-danger" onclick="return confirm('are you sure to delete this??')"
                                                 href="{{url('/customer/delete/'.$customer->id)}}" >
                                                 <i class="bi bi-trash"></i></a>
                                         </td>
                                 </tr>
                         @empty
-                                <tr><td colspan="5">No Customer Found</td></tr>
+                                <tr><td colspan="6">No Customer Found</td></tr>
                         @endforelse
                        
                 </tbody>

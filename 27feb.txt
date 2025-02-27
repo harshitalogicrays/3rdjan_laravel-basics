@@ -1,0 +1,77 @@
+helper class -
+
+=====================================
+seeder and faker  - 
+
+php artisan make:seeder customerseeder
+databaseseeder - 
+      $this->call([
+            customerseeder::class
+        ]);
+
+php artisan db:seed 
+DB::table('customers')->insert([
+            'name' => Str::random(10),
+            'email' => Str::random(10).'@example.com',
+            'password' => Hash::make('password'),
+            "dob"=>"2000-01-10",
+            "mobile"=>"9890980099",
+            "gender"=>"m",
+            "address"=>Str::random(20),
+            "status"=>1
+        ]);
+
+
+faker - 
+use Faker\Factory;
+
+        $faker = Factory::create();
+        for($i=1;$i<=50;$i++){
+            DB::table('customers')->insert([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' =>  $faker->password,
+                "dob"=>"2000-01-10",
+                "mobile"=>"9089098765",
+                "gender"=>"m",
+                "address"=>$faker->text,
+                "status"=>1
+            ]);
+        } 
+ php artisan db:seed 
+
+name(): Generates a random name.
+firstName(): Generates a random first name.
+lastName(): Generates a random last name.
+email(): Generates a random email address.
+password(): Generates a random password.
+phoneNumber(): Generates a random phone number.
+address(): Generates a random address.
+city(): Generates a random city name.
+state(): Generates a random state name.
+postcode(): Generates a random postal code.
+country(): Generates a random country name.
+sentence(): Generates a random sentence.
+paragraph(): Generates a random paragraph.
+text(): Generates a random text.
+randomElement($array): Returns a random element from the given array.
+dateTime($max = 'now', $timezone = null): Generates a random date and time.
+numberBetween($min = 0, $max = 2147483647): Generates a random number between the given range.
+boolean(): Generates a random boolean value.
+
+
+
+
+
+====================================
+
+soft deletes- 
+
+php artisan  make:migration add_deleted_at_to_customers_table
+
+onlyTrashed 
+withTrashed 
+restore
+forceDelete 
+
+search 
