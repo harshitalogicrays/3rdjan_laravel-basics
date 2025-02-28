@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstController;
 use App\Http\Controllers\customerController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\layoutDemoController;
 //http://127.0.0.1:8000/ - base URL
 // Route::get('/', function () {
@@ -65,5 +66,13 @@ Route::controller(customerController::class)->group(function(){
         Route::get('/delete/{id}','delete');
         Route::get('/edit/{id}','edit');
         Route::put('/update/{id}','update');
+        Route::get('/trash','viewtrash');
+        Route::get('/restore/{id}','restore');
+        Route::get('/forcedelete/{id}','forcedelete');
     });
+    Route::get('/search','index');
 }); 
+
+Route::get("/fileupload",[FileUploadController::class,'index']);
+
+Route::post("/fileupload",[FileUploadController::class,'upload']);

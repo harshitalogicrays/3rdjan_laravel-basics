@@ -6,9 +6,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <h1>Customers 
-        <a href="{{url('/customer/trash')}}" type="button" class="btn btn-danger float-end btn-lg me-2"> Trash </a>    
-        <a href="{{url('/customer/create')}}" type="button" class="btn btn-info float-end btn-lg me-2"> Add </a>    
+    <h1>Deleted Customers 
+        <a href="{{url('/customer')}}" type="button" class="btn btn-danger float-end btn-lg me-2"> Back </a>    
     </h1><hr/>
     <div class="table-responsive" >
         <table class="table table-bordered table-striped table-hover">
@@ -48,10 +47,10 @@
                                         </td>
                                         <td>
                                                 <a class="btn btn-success"
-                                                href="{{url('/customer/edit/'.$customer->id)}}"><i class="bi bi-pen"></i></a>
-                                                <a class="btn btn-danger"
-                                                href="{{url('/customer/delete/'.$customer->id)}}" >
-                                                <i class="bi bi-trash"></i></a>
+                                                href="{{url('/customer/restore/'.$customer->id)}}">Restore</a>
+                                                <a class="btn btn-danger" onclick="return confirm('are you sure to delete this??')"
+                                                href="{{url('/customer/forcedelete/'.$customer->id)}}" >
+                                               Remove</a>
                                         </td>
                                 </tr>
                         @empty

@@ -27,10 +27,14 @@
               <li><a class="dropdown-item" href="{{url('/customer')}}">View</a></li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/fileupload')}}">file Upload</a>
+          </li>
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" action="{{url('/search')}}">
             <div class="input-group">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control" type="search" placeholder="Search" 
+                value="{{Request::get('search')}}" name="search">
                 <button class="btn btn-danger" type="submit"><i class="bi bi-search"></i></button>
             </div>
         </form>

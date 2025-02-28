@@ -9,10 +9,21 @@ use App\Http\Controllers\Controller;
 
 class customerController extends Controller
 {
-    function index(){
+    function index(Request $request){
         // $customers = Customer::all();
-        $customers = Customer::paginate(3);
-        return view('customer.index',compact('customers'));   
+        // $customers = Customer::paginate(5);
+        // return view('customer.index',compact('customers'));   
+
+        $search = $request->search;
+        if($search !=''){
+            $customers = Customer::where('name','like',"%$search%")->orWhere('email','like',"%$search%")->paginate(5);
+             return view('customer.index',compact('customers')); 
+        }
+        else {
+              $customers = Customer::paginate(5);
+             return view('customer.index',compact('customers')); 
+        }
+
     }
     function create(){
         return view('customer.create');
@@ -101,6 +112,22 @@ class customerController extends Controller
             return redirect('/customer')->with('message','customer added');
         }
     }
+
+    function viewtrash(){
+        $customers = Customer::onlyTrashed()->paginate(5);
+            return view('customer.trash',compact('customers'));
+    }
+
+    function restore($id){
+        $customer = Customer::onlyTrashed()->where('id',$id)->restore();
+        return redirect('/customer')->with('message','customer restored');
+    }
+
+    function forcedelete($id){
+        $customer = Customer::onlyTrashed()->where('id',$id)->forceDelete();
+        return redirect()->back();
+    }
+
 }
 
 // 'password'=>['required','min:5','max:20','confirmed']

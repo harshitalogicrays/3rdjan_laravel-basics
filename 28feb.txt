@@ -1,0 +1,14 @@
+soft deletes- 
+
+php artisan  make:migration add_deleted_at_to_customers_table
+
+onlyTrashed 
+withTrashed 
+restore
+forceDelete 
+
+search 
+
+components -  
+single action controller 
+resource controller 
