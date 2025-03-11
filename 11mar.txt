@@ -1,0 +1,12 @@
+components -  
+a. basic - .php and .blade.php  => php artisan make:component alert
+b. anonymous  - .blade.php  => php artisan make:component products --view
+c. inline - .php => php artisan make:component inlinecomp --inline
+
+
+single action controller 
+resource controller 
+joining 
+
+
+auth 
