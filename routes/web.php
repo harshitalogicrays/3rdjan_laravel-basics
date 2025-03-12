@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JoinController;
 use App\Http\Controllers\firstController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\customerController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\layoutDemoController;
+use App\Http\Controllers\singleactioncontroller;
 //http://127.0.0.1:8000/ - base URL
 // Route::get('/', function () {
 //     return view('welcome');
@@ -76,3 +79,9 @@ Route::controller(customerController::class)->group(function(){
 Route::get("/fileupload",[FileUploadController::class,'index']);
 
 Route::post("/fileupload",[FileUploadController::class,'upload']);
+
+Route::get("/sa",singleactioncontroller::class);
+
+Route::resource('photos', PhotoController::class);
+
+Route::get("/join",[JoinController::class,'index']);

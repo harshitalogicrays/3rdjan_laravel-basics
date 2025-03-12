@@ -30,6 +30,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{{url('/fileupload')}}">file Upload</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('photos.index')}}">resource</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/join')}}">Joining</a>
+          </li>
         </ul>
         <form class="d-flex" role="search" action="{{url('/search')}}">
             <div class="input-group">

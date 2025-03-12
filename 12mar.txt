@@ -1,0 +1,15 @@
+1. basic controller -  php artisan make:controller controllername
+
+2 . single action controller - php artisan make:controller ProvisionServer --invokable
+
+3. resource controller - 
+php artisan make:controller PhotoController --resource
+
+joining  - 
+php artisan migrate --path=/database/migrations/2025_03_12_090712_create_course_table.php
+
+middleware
+
+
+
+auth 

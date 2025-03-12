@@ -3,9 +3,15 @@ a. basic - .php and .blade.php  => php artisan make:component alert
 b. anonymous  - .blade.php  => php artisan make:component products --view
 c. inline - .php => php artisan make:component inlinecomp --inline
 
+<x-comp></x-comp>
+/////////////////////////////////////////////
+1. basic controller -  php artisan make:controller controllername
 
-single action controller 
-resource controller 
+2 . single action controller - php artisan make:controller ProvisionServer --invokable
+
+3. resource controller - 
+
+middleware
 joining 
 
 
